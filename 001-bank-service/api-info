@@ -1,0 +1,67 @@
+Fund Transfer API:
+-------------------------------------------------
+Request:
+http://localhost:8083/bank/api/fundTransafer
+POST
+{
+  "fromAccountNumber": 123456789,
+  "toAccountNumber": 987654321,
+  "amount": 200,
+  "customerComments": "Last month money returned"
+}
+Response:
+{
+  "fromAccountNumber": 123456789,
+  "toAccountNumber": 987654321,
+  "amount": 200,
+  "customerComments": "Last month money returned",
+  "transactionStatus": "SUCCESS",
+  "transactionComments": "Amount Transfered Successfully"
+}
+
+Statement API;
+-------------------------------------------------
+Request:
+http://localhost:8083/bank/api/statement/{customerId}
+POST
+{
+  "fromDate": "01-02-2021",
+  "toDate": "05-03-2021"
+}
+Response:
+{
+  "firstName": "Rajkumar",
+  "lastName": "Banala",
+  "accountNumber": 123456789,
+  "balance": 4500,
+  "transactions": [
+    {
+      "transactionType": "DEBIT",
+      "transactionStatus": "SUCCESS",
+      "transactionComments": "Amount Dedited",
+      "customerComments": "Sending from raj to user1",
+      "amount": 100,
+      "sourceAccountNumber": 987654321,
+      "transactionDate": "05-03-2021 19:49:50"
+    },
+    {
+      "transactionType": "DEBIT",
+      "transactionStatus": "SUCCESS",
+      "transactionComments": "Amount Dedited",
+      "customerComments": "KFC Amount returned",
+      "amount": 200,
+      "sourceAccountNumber": 987654321,
+      "transactionDate": "05-03-2021 19:50:10"
+    },
+    {
+      "transactionType": "DEBIT",
+      "transactionStatus": "SUCCESS",
+      "transactionComments": "Amount Dedited",
+      "customerComments": "Last month money returned",
+      "amount": 200,
+      "sourceAccountNumber": 987654321,
+      "transactionDate": "05-03-2021 19:50:30"
+    }
+  ]
+}
+
