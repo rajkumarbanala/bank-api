@@ -7,7 +7,10 @@ import javax.persistence.Enumerated;
 
 import com.example.demo.enums.EnumsUtil.TransactionStatus;
 import com.example.demo.enums.EnumsUtil.TransactionType;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.example.demo.util.JsonUtilLocalDateTimeDeSerializer;
+import com.example.demo.util.JsonUtilLocalDateTimeSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -41,7 +44,8 @@ public class CustomerResponseTransactionsDTO {
 	private double amount;
 	
 	private Long sourceAccountNumber;
-	
-	@JsonFormat(pattern="dd-MM-yyyy HH:mm:ss")
+
+	@JsonSerialize(using = JsonUtilLocalDateTimeSerializer.class)
+	@JsonDeserialize(using = JsonUtilLocalDateTimeDeSerializer.class)
 	private LocalDateTime transactionDate;
 }
