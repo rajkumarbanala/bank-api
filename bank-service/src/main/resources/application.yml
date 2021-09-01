@@ -1,0 +1,24 @@
+server:
+  port: 8083
+  servlet:
+    context-path: /bank
+
+spring:
+  application:
+    name: booking-service
+  #db
+  datasource:
+    url: jdbc:mysql://localhost:3306/testing_demo_bank
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+#logs
+logging:
+  level:
+    com: debug
+    '[com.zaxxer.hikari]': error
+    org: error
